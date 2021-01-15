@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="checkstyle-8.36.2-all1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/checkstyle-8.36.2-all.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-annotations-2.9.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-core-2.9.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jackson-databind-2.9.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
