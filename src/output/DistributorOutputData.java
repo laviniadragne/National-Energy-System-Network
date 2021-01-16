@@ -74,27 +74,27 @@ public class DistributorOutputData {
         this.contracts = contracts;
     }
 
-    public Integer getEnergyNeededKW() {
+    public final Integer getEnergyNeededKW() {
         return energyNeededKW;
     }
 
-    public void setEnergyNeededKW(Integer energyNeededKW) {
+    public final void setEnergyNeededKW(Integer energyNeededKW) {
         this.energyNeededKW = energyNeededKW;
     }
 
-    public Integer getContractCost() {
+    public final Integer getContractCost() {
         return contractCost;
     }
 
-    public void setContractCost(Integer contractCost) {
+    public final void setContractCost(Integer contractCost) {
         this.contractCost = contractCost;
     }
 
-    public EnergyChoiceStrategyType getProducerStrategy() {
+    public final EnergyChoiceStrategyType getProducerStrategy() {
         return producerStrategy;
     }
 
-    public void setProducerStrategy(EnergyChoiceStrategyType producerStrategy) {
+    public final void setProducerStrategy(EnergyChoiceStrategyType producerStrategy) {
         this.producerStrategy = producerStrategy;
     }
 

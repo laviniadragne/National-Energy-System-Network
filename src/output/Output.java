@@ -49,11 +49,11 @@ public class Output {
         this.distributors = distributors;
     }
 
-    public List<ProducerOutputData> getEnergyProducers() {
+    public final List<ProducerOutputData> getEnergyProducers() {
         return energyProducers;
     }
 
-    public void setEnergyProducers(List<ProducerOutputData> energyProducers) {
+    public final void setEnergyProducers(List<ProducerOutputData> energyProducers) {
         this.energyProducers = energyProducers;
     }
 

@@ -54,13 +54,4 @@ public class ConsumerInputData {
     public void setMonthlyIncome(final Integer monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
-
-    @Override
-    public String toString() {
-        return "ConsumerInputData{" +
-                "id=" + id +
-                ", initialBudget=" + initialBudget +
-                ", monthlyIncome=" + monthlyIncome +
-                '}';
-    }
 }

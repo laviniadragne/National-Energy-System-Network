@@ -2,14 +2,19 @@ package simulation;
 
 import java.util.List;
 
+/**
+ * Clasa contine o lista de producatori
+ * si operatiile asociate acestora
+ * folosite in simulare
+ */
 public class ProducerList {
     private List<Producer> producers;
 
-    public List<Producer> getProducers() {
+    public final List<Producer> getProducers() {
         return producers;
     }
 
-    public void setProducers(List<Producer> producers) {
+    public final void setProducers(List<Producer> producers) {
         this.producers = producers;
     }
 
@@ -18,12 +23,17 @@ public class ProducerList {
     }
 
 
+    /**
+     * Adauga listele cu distribuitorii abonati la producatori,
+     * din luna respectiva
+     * @param monthId id-ul lunii curente
+     */
     public void updateMonthlyStats(Integer monthId) {
         for (Producer producer : producers) {
             MonthlyStats newMonth = new MonthlyStats(monthId);
 
             // Adaug in lista din luna respectiva toti distribuitorii
-            // abonat la acel producator
+            // abonati la acel producator
             for (Distributor distributor : producer.getDistributors()) {
                 if (!newMonth.getDistributorsIds().contains(distributor.getId())) {
                     newMonth.getDistributorsIds().add(distributor.getId());
@@ -33,23 +43,19 @@ public class ProducerList {
         }
     }
 
+    /**
+     * Sterge un distribuitor primit ca si parametru
+     * din listele producatorilor si din listele de observatori
+     * @param distributor ce trebuie sters
+     */
     public void deleteDistributor(Distributor distributor) {
         for (Producer producer : producers) {
-            int i;
-            int ok = 0;
-            // Caut in lista de distribuitori a fiecarui producator
-            // pe respectivul, dupa id
-            for (i = 0; i < producer.getDistributors().size(); i++) {
-                if (distributor.getId().equals(producer.getDistributors().get(i).getId())) {
-                    ok = 1;
-                    break;
-                }
-            }
+
+            // Il caut in listele de distribuitori ale fiecarui producator si il sterg
+            producer.removeDistributor(distributor.getId());
+
             // Era prezent in lista, il sterg si din listele de observatori
-            if (ok == 1) {
-                producer.getDistributors().remove(i);
-                producer.deleteObserver(distributor);
-            }
+            producer.deleteObserver(distributor);
         }
     }
 }

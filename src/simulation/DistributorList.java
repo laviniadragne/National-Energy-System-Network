@@ -117,16 +117,26 @@ public class DistributorList {
         }
     }
 
+    /**
+     * Aplica strategia pentru fiecare distribuitor in parte
+     * daca a fost notificat
+     * @param dataBasedProducers lista de producatori
+     *                           folosita pentru a se aplica
+     *                           strategiile
+     */
     public void applyStrategyList(List<Producer> dataBasedProducers) {
         // Aplic strategia pentru toti distribuitorii
         for (Distributor distributor : distributors) {
+            // A fost notificat
             if (distributor.isUpdate()) {
                 distributor.applyStrategy(dataBasedProducers);
             }
         }
     }
 
-    // Schimb costurile de productie pentru noii distribuitori
+    /**
+     * Schimb costurile de productie pentru noii distribuitori
+     */
     public void applyChangesCosts() {
         for (Distributor distributor : distributors) {
             distributor.setProductionCost();
@@ -134,11 +144,11 @@ public class DistributorList {
     }
 
     /**
-     *  Toți distribuitorii non-bankrupt își actualizează producătorii dacă e cazul și își calculează costul de producție
-     *     ordinea actualizării se face în ordinea crescătoare a id-urilor distribuitorilor
-     *     în momentul în care unui distribuitor îi vine randul să își actualizeze producătorii,
-     *     întâi se scoate acest distribuitor de la toți producătorii de la care lua energie și
-     *     apoi se aplică strategia de alegere.
+     *  Toți distribuitorii non-bankrupt își actualizează producătorii dacă e cazul și î
+     *  și calculează costul de producție ordinea actualizării se face în ordinea crescătoare
+     *  a id-urilor distribuitorilor în momentul în care unui distribuitor îi vine randul să
+     *  își actualizeze producătorii, întâi se scoate acest distribuitor de la toți
+     *  producătorii de la care lua energie și apoi se aplică strategia de alegere.
      */
     public void updateProducers(List<Producer> dataBaseProducers) {
         for (Distributor distributor : distributors) {
@@ -168,17 +178,13 @@ public class DistributorList {
         }
     }
 
+    /**
+     * Seteaza intr-un camp al distribuitorilor noile preturi
+     * de contracte
+     */
     public void setContractPriceList() {
         for (Distributor distributor : distributors) {
             distributor.setVarContractPrice(distributor.getContractPrice());
         }
-    }
-
-
-    @Override
-    public String toString() {
-        return "DistributorList{" +
-                "distributors=" + distributors +
-                '}';
     }
 }

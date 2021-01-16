@@ -11,38 +11,30 @@ public class MonthlyUpdates {
 
     private List<ConsumerInputData> newConsumers;
     private List<CostInputData> distributorChanges;
-    private List<ProducerCostInputData> producerChanges;
+    private List<ProducerUpdateInputData> producerChanges;
 
-    /**
-     *
-     * @return Intoarce o lista de noi consumatori
-     */
-    public List<ConsumerInputData> getNewConsumers() {
+    public final List<ConsumerInputData> getNewConsumers() {
         return newConsumers;
     }
 
-    /**
-     *
-     * Seteaza o lista de noi consumatori
-     */
-    public void setNewConsumers(final List<ConsumerInputData> newConsumers) {
+    public final void setNewConsumers(final List<ConsumerInputData> newConsumers) {
         this.newConsumers = newConsumers;
     }
 
 
-    public List<CostInputData> getDistributorChanges() {
+    public final List<CostInputData> getDistributorChanges() {
         return distributorChanges;
     }
 
-    public void setDistributorChanges(List<CostInputData> distributorChanges) {
+    public final void setDistributorChanges(List<CostInputData> distributorChanges) {
         this.distributorChanges = distributorChanges;
     }
 
-    public List<ProducerCostInputData> getProducerChanges() {
+    public final List<ProducerUpdateInputData> getProducerChanges() {
         return producerChanges;
     }
 
-    public void setProducerChanges(List<ProducerCostInputData> producerChanges) {
+    public final void setProducerChanges(List<ProducerUpdateInputData> producerChanges) {
         this.producerChanges = producerChanges;
     }
 

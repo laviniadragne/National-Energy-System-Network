@@ -142,7 +142,6 @@ public class Consumer implements Entity {
         // Nu e restant nimanui initial
         this.idOverdue = -1;
         this.priceOverdue = -1;
-        // Nu are niciun contract initial
     }
 
     /**
@@ -164,18 +163,5 @@ public class Consumer implements Entity {
         Integer actualMonths = getContract().getRemainedContractMonths();
         actualMonths--;
         getContract().setRemainedContractMonths(actualMonths);
-    }
-
-    @Override
-    public String toString() {
-        return "Consumer{" +
-                "id=" + id +
-                ", initialBudget=" + initialBudget +
-                ", monthlyIncome=" + monthlyIncome +
-                ", contract=" + contract +
-                ", isBankrupt=" + isBankrupt +
-                ", idOverdue=" + idOverdue +
-                ", priceOverdue=" + priceOverdue +
-                '}';
     }
 }

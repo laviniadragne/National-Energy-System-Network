@@ -28,7 +28,8 @@ public abstract class Strategy {
      * @return lista cu producatorii necesari pentru a indeplini
      *         acea cantitate de energie
      */
-    public List<Producer> choiceSortedProducers(Integer energyNeededKW, List<Producer> myProducers) {
+    public List<Producer> choiceSortedProducers(Integer energyNeededKW,
+                                                List<Producer> myProducers) {
         int currentEnergy = 0;
         int i = 0;
         List<Producer> returnProducers = new ArrayList<>();
@@ -37,7 +38,8 @@ public abstract class Strategy {
         while ((currentEnergy < energyNeededKW) && (i < myProducers.size())) {
 
             // Daca mai primeste distribuitori
-            if (!myProducers.get(i).getMaxDistributors().equals(myProducers.get(i).getActualDistributors())) {
+            if (!myProducers.get(i).getMaxDistributors().equals(myProducers.get(i)
+                                        .getActualDistributors())) {
 
                 // Actualizez cantitatea de energie curenta a distribuitorului
                 currentEnergy += myProducers.get(i).getEnergyPerDistributor();

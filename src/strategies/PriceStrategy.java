@@ -7,13 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Un distribuitor își alege producătorii prioritizând doar după preț,
- * apoi după cantitate
+ * Strategia conform careia un distribuitor își alege producătorii
+ * prioritizând doar după preț, apoi după cantitate
  */
-public class PriceStrategy extends Strategy{
+public class PriceStrategy extends Strategy {
+
+    /**
+     * Alege pe baza unei cantitati de energie primite
+     * producatorii ce se incadreaza in acea strategie
+     * @param databasedProducers baza de date cu producatori
+     * @param energyNeededKW cantitatea de energie necesara
+     * @return lista de producatori alesi
+     */
     @Override
     public List<Producer> chooseProducers(List<Producer> databasedProducers,
-                                          Integer energyNeededKW){
+                                          Integer energyNeededKW) {
         // Sortez o lista noua de producatori ce contine lista din baza de
         // date, pentru a nu strica lista din baza de date
         List<Producer> myProducers = new ArrayList<>(databasedProducers);
@@ -24,6 +32,7 @@ public class PriceStrategy extends Strategy{
         // Sortez corespunzator
         sortGreenStrategy(producerList.getProducers());
 
+        // Returnez doar cati producatori am nevoie
         return choiceSortedProducers(energyNeededKW, producerList.getProducers());
     }
 }

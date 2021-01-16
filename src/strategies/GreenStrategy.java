@@ -7,15 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Un distribuitor își alege producătorii prioritizându-i
- * pe cei cu renewable energy întâi, apoi după preț, apoi după cantitate
+ * Strategia conform careia un distribuitor își alege
+ * producătorii prioritizându-i pe cei cu renewable energy întâi,
+ * apoi după preț, apoi după cantitate
  */
 public class GreenStrategy extends Strategy {
+
+    /**
+     * Alege pe baza unei cantitati de energie primite
+     * producatorii ce se incadreaza in acea strategie
+     * @param databasedProducers baza de date cu producatori
+     * @param energyNeededKW cantitatea de energie necesara
+     * @return lista de producatori alesi
+     */
     @Override
-    public List<Producer> chooseProducers(List<Producer> databasedProducers, Integer energyNeededKW) {
+    public List<Producer> chooseProducers(List<Producer> databasedProducers,
+                                          Integer energyNeededKW) {
 
         // Sortez o lista noua de producatori ce contine lista din baza de
-        // date, pentru a nu strica lista din baza de date
+        // date
         List<Producer> myProducers;
 
         List<Producer> renewableProducers = new ArrayList<>();
@@ -25,8 +35,7 @@ public class GreenStrategy extends Strategy {
         for (Producer producer : databasedProducers) {
             if (producer.getEnergyType().isRenewable()) {
                 renewableProducers.add(producer);
-            }
-            else {
+            } else {
                 nonrenewableProducers.add(producer);
             }
         }
@@ -35,12 +44,12 @@ public class GreenStrategy extends Strategy {
         ProducerList producerNonrenewableList = new ProducerList(nonrenewableProducers);
 
 
-        // Sortez corespunzator
+        // Sortez corespunzator fiecare lista
         sortGreenStrategy(producerRenewableList.getProducers());
         sortGreenStrategy(producerNonrenewableList.getProducers());
 
         // Lista myProducers va contine la inceput producatorii cu energie regenerabila
-        // si apoi pe cei cu energie neregenerabila.
+        // si apoi pe cei cu energie neregenerabila
         myProducers = producerRenewableList.getProducers();
         myProducers.addAll(producerNonrenewableList.getProducers());
 

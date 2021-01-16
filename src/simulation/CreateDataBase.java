@@ -130,7 +130,8 @@ public final class CreateDataBase {
         for (int i = 0; i < actualMonth.getProducerChanges().size(); i++) {
             // Ii gasesc id-ul producatorului la care trebuie facut update
             Integer idUpdate = actualMonth.getProducerChanges().get(i).getId();
-            Integer energyPerDistributor = actualMonth.getProducerChanges().get(i).getEnergyPerDistributor();
+            Integer energyPerDistributor = actualMonth.getProducerChanges()
+                                            .get(i).getEnergyPerDistributor();
 
             // Il caut in dictionar
             Producer updateProducer = producerMap.get(idUpdate);
@@ -151,7 +152,8 @@ public final class CreateDataBase {
         for (int i = 0; i < actualMonth.getDistributorChanges().size(); i++) {
             // Ii gasesc id-ul distribuitorului la care trebuie facut update
             Integer idUpdate = actualMonth.getDistributorChanges().get(i).getId();
-            Integer infrastructCost = actualMonth.getDistributorChanges().get(i).getInfrastructureCost();
+            Integer infrastructCost = actualMonth.getDistributorChanges()
+                                            .get(i).getInfrastructureCost();
 
             // Il caut in dictionar
             Distributor updateDistribuitor = distributorMap.get(idUpdate);

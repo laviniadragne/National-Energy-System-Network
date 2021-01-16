@@ -45,20 +45,11 @@ public class InitialData {
         this.distributors = distributors;
     }
 
-    public List<ProducerInputData> getProducers() {
+    public final List<ProducerInputData> getProducers() {
         return producers;
     }
 
-    public void setProducers(List<ProducerInputData> producers) {
+    public final void setProducers(List<ProducerInputData> producers) {
         this.producers = producers;
-    }
-
-    @Override
-    public String toString() {
-        return "InitialData{" +
-                "consumers=" + consumers +
-                ", distributors=" + distributors +
-                ", producers=" + producers +
-                '}';
     }
 }

@@ -135,12 +135,12 @@ public final class Simulation {
         }
     }
 
-
     /**
-     * Creeaza o clasa de Output pentru a scrie rezultatele, pe baza a 2 liste
-     * de consumatori si distribuitori
+     * Creeaza o clasa de Output pentru a scrie rezultatele, pe baza a 3 liste
+     * de consumatori, distribuitori si producatori
      * @param consumers lista de consumatori
      * @param distributors lista de distribuitori
+     * @param producers lista de producatori
      * @return o clasa de output
      */
     public static Output createOutput(final List<Consumer> consumers,
@@ -166,8 +166,10 @@ public final class Simulation {
 
             DistributorOutputData distributorOutputData =
                     new DistributorOutputData(distributor.getId(), distributor.getEnergyNeededKW(),
-                                    distributor.getVarContractPrice(), distributor.getInitialBudget(),
-                                distributor.getProducerStrategy(),distributor.isBankrupt(), outContracts);
+                                    distributor.getVarContractPrice(),
+                                    distributor.getInitialBudget(),
+                                    distributor.getProducerStrategy(),
+                                    distributor.isBankrupt(), outContracts);
 
             output.getDistributors().add(distributorOutputData);
         }
@@ -194,7 +196,7 @@ public final class Simulation {
 
 
     /**
-     * Ordinea de efectuare a operatiilor dintr-o luna
+     * Ordinea de efectuare a operatiilor de la inceputul lunii
      * @param consumers clasa cu o lista de consumatori
      * @param distributors clasa cu o lista de distribuitori
      */
@@ -268,6 +270,7 @@ public final class Simulation {
         operationsStart(consumerList, distributorList, distributorMap, producerList);
 
 
+        // Simularea din fiecare luna
         while (turns < input.getNumberOfTurns()) {
 
             // Se adauga noii consumatori
@@ -277,14 +280,11 @@ public final class Simulation {
             // Se adauga noile update-uri la costurile distribuitorilor
             CreateDataBase.updateDistributors(actualMonth, distributorMap);
 
-            // actualizez costurile de productie
+            // Actualizez costurile de productie
             distributorList.applyChangesCosts();
 
             // Se apeleaza operatiile de la inceputul lunii
             operationsStart(consumerList, distributorList, distributorMap, producerList);
-
-//            System.out.println("Numarul rundei: " + (turns));
-
 
             // Operatiile din timpul lunii
             // Se face update la Producatori
@@ -297,9 +297,9 @@ public final class Simulation {
             // Fac update la listele de distribuitori din acea luna
             // ale fiecarui producator
             producerList.updateMonthlyStats(turns);
-
         }
 
+        // Se creeaza output-ul pentru scriere
         return createOutput(consumers, distributors, producers);
     }
 }

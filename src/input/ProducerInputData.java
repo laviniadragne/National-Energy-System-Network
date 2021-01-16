@@ -2,6 +2,10 @@ package input;
 
 import entities.EnergyType;
 
+/**
+ * Clasa contine informatiile parsate din testele de input
+ * corespunzatoare unui producator
+ */
 public class ProducerInputData {
     private Integer id;
     private EnergyType energyType;
@@ -9,43 +13,43 @@ public class ProducerInputData {
     private Double priceKW;
     private Integer energyPerDistributor;
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(Integer id) {
         this.id = id;
     }
 
-    public EnergyType getEnergyType() {
+    public final EnergyType getEnergyType() {
         return energyType;
     }
 
-    public void setEnergyType(EnergyType energyType) {
+    public final void setEnergyType(EnergyType energyType) {
         this.energyType = energyType;
     }
 
-    public Integer getMaxDistributors() {
+    public final Integer getMaxDistributors() {
         return maxDistributors;
     }
 
-    public void setMaxDistributors(Integer maxDistributors) {
+    public final void setMaxDistributors(Integer maxDistributors) {
         this.maxDistributors = maxDistributors;
     }
 
-    public Double getPriceKW() {
+    public final Double getPriceKW() {
         return priceKW;
     }
 
-    public void setPriceKW(Double priceKW) {
+    public final void setPriceKW(Double priceKW) {
         this.priceKW = priceKW;
     }
 
-    public Integer getEnergyPerDistributor() {
+    public final Integer getEnergyPerDistributor() {
         return energyPerDistributor;
     }
 
-    public void setEnergyPerDistributor(Integer energyPerDistributor) {
+    public final void setEnergyPerDistributor(Integer energyPerDistributor) {
         this.energyPerDistributor = energyPerDistributor;
     }
 }

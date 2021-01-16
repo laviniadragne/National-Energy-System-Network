@@ -30,23 +30,23 @@ public class Distributor implements Entity, Observer {
     private boolean update;
     private Integer contractPrice;
 
-    public Integer getEnergyNeededKW() {
+    public final Integer getEnergyNeededKW() {
         return energyNeededKW;
     }
 
-    public void setEnergyNeededKW(Integer energyNeededKW) {
+    public final void setEnergyNeededKW(Integer energyNeededKW) {
         this.energyNeededKW = energyNeededKW;
     }
 
-    public EnergyChoiceStrategyType getProducerStrategy() {
+    public final EnergyChoiceStrategyType getProducerStrategy() {
         return producerStrategy;
     }
 
-    public void setProducerStrategy(EnergyChoiceStrategyType producerStrategy) {
+    public final void setProducerStrategy(EnergyChoiceStrategyType producerStrategy) {
         this.producerStrategy = producerStrategy;
     }
 
-    public List<Producer> getProducerList() {
+    public final List<Producer> getProducerList() {
         return producerList;
     }
 
@@ -148,20 +148,20 @@ public class Distributor implements Entity, Observer {
         return contractList;
     }
 
-    public boolean isUpdate() {
+    public final boolean isUpdate() {
         return update;
     }
 
-    public void setUpdate(boolean update) {
+    public final void setUpdate(boolean update) {
         this.update = update;
     }
 
-    public Integer getVarContractPrice() {
+    public final Integer getVarContractPrice() {
         return contractPrice;
     }
 
-    public void setVarContractPrice(Integer contractPrice) {
-        this.contractPrice = contractPrice;
+    public final void setVarContractPrice(Integer newContractPrice) {
+        this.contractPrice = newContractPrice;
     }
 
     public Distributor(final Integer id, final Integer contractLength,
@@ -233,7 +233,8 @@ public class Distributor implements Entity, Observer {
             cost += producer.getEnergyPerDistributor()
                             * producer.getPriceKW();
         }
-        this.initialProductionCost =  (int) Math.round(Math.floor(cost / 10));
+        this.initialProductionCost =
+                (int) Math.round(Math.floor(cost / Constants.SCALING_FACTOR));
     }
 
     /**
@@ -284,19 +285,20 @@ public class Distributor implements Entity, Observer {
     public void applyStrategy(List<Producer> databasedProducers) {
 
         List<Producer> newProducers = new ArrayList<>();
-        if (producerStrategy.label.equals("GREEN")) {
+        if (producerStrategy.label.equals(Constants.GREEN)) {
             GreenStrategy greenStrategy = new GreenStrategy();
-            newProducers = greenStrategy.chooseProducers(databasedProducers, energyNeededKW);
-        }
-        else {
-            if (producerStrategy.label.equals("QUANTITY")) {
+            newProducers = greenStrategy.chooseProducers(databasedProducers,
+                                                        energyNeededKW);
+        } else {
+            if (producerStrategy.label.equals(Constants.QUANTITY)) {
                 QuantityStrategy quantityStrategy = new QuantityStrategy();
-                newProducers = quantityStrategy.chooseProducers(databasedProducers, energyNeededKW);
-            }
-            else {
-                if (producerStrategy.label.equals("PRICE")) {
+                newProducers = quantityStrategy.chooseProducers(databasedProducers,
+                                                                energyNeededKW);
+            } else {
+                if (producerStrategy.label.equals(Constants.PRICE)) {
                     PriceStrategy priceStrategy = new PriceStrategy();
-                    newProducers = priceStrategy.chooseProducers(databasedProducers, energyNeededKW);
+                    newProducers = priceStrategy.chooseProducers(databasedProducers,
+                                                                energyNeededKW);
                 }
             }
         }
@@ -306,34 +308,22 @@ public class Distributor implements Entity, Observer {
         // Actualizez lista cu noii producatori
         producerList = newProducers;
 
-        // Am aplicat deja strategia
+        // Am aplicat deja strategia, deci nu mai trebuie facut update
         this.setUpdate(false);
 
         // Pentru fiecare producator adaug distribuitorul corespunzator
-        // Si il adaug in lista de observatori
+        // Il adaug si in lista de observatori
         for (Producer producer : newProducers) {
             producer.getDistributors().add(this);
             producer.addObserver(this);
         }
     }
 
-    @Override
-    public String toString() {
-        return "Distributor{" +
-                "id=" + id +
-//                ", contractLength=" + contractLength +
-//                ", initialBudget=" + initialBudget +
-//                ", initialInfrastructureCost=" + initialInfrastructureCost +
-//                ", initialProductionCost=" + initialProductionCost +
-//                ", contractList=" + contractList +
-//                ", isBankrupt=" + isBankrupt +
-//                ", energyNeededKW=" + energyNeededKW +
-//                ", producerStrategy=" + producerStrategy +
-//                ", update=" + update +
-                '}';
-    }
 
-    // Retin ca tre sa fac update luna viitoare
+    /**
+     * Retin ca tre sa fac update luna viitoare
+     * distribuitorului
+     */
         @Override
         public void update(Observable o, Object arg) {
             this.update = true;

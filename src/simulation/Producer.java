@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+/**
+ * Clasa contine informatiile despre un producator
+ * folosit in simularea jocului
+ * Ea va fi, in cadrul simularii, un observator
+ * pentru un producator
+ */
 public class Producer extends Observable implements Entity {
 
         private Integer id;
@@ -17,73 +23,73 @@ public class Producer extends Observable implements Entity {
         private List<Distributor> distributors;
         private List<MonthlyStats> monthlyStats;
 
-        public Integer getId() {
+        public final Integer getId() {
             return id;
         }
 
-        public void setId(Integer id) {
+        public final void setId(Integer id) {
             this.id = id;
         }
 
-        public EnergyType getEnergyType() {
+        public final EnergyType getEnergyType() {
             return energyType;
         }
 
-        public void setEnergyType(EnergyType energyType) {
+        public final void setEnergyType(EnergyType energyType) {
             this.energyType = energyType;
         }
 
-        public Integer getMaxDistributors() {
+        public final Integer getMaxDistributors() {
             return maxDistributors;
         }
 
-        public void setMaxDistributors(Integer maxDistributors) {
+        public final void setMaxDistributors(Integer maxDistributors) {
             this.maxDistributors = maxDistributors;
         }
 
-        public Double getPriceKW() {
+        public final Double getPriceKW() {
             return priceKW;
         }
 
-        public void setPriceKW(Double priceKW) {
+        public final void setPriceKW(Double priceKW) {
             this.priceKW = priceKW;
         }
 
-        public Integer getEnergyPerDistributor() {
+        public final Integer getEnergyPerDistributor() {
             return energyPerDistributor;
         }
 
-        public void setEnergyPerDistributor(Integer energyPerDistributor) {
+        public final void setEnergyPerDistributor(Integer energyPerDistributor) {
             this.energyPerDistributor = energyPerDistributor;
         }
 
-        public Integer getActualDistributors() {
+        public final Integer getActualDistributors() {
             return actualDistributors;
         }
 
-        public void setActualDistributors(Integer actualDistributors) {
+        public final void setActualDistributors(Integer actualDistributors) {
             this.actualDistributors = actualDistributors;
         }
 
-        public List<Distributor> getDistributors() {
+        public final List<Distributor> getDistributors() {
             return distributors;
         }
 
-        public void setDistributors(List<Distributor> distributors) {
+        public final void setDistributors(List<Distributor> distributors) {
             this.distributors = distributors;
         }
 
-        public List<MonthlyStats> getMonthlyStats() {
+        public final List<MonthlyStats> getMonthlyStats() {
             return monthlyStats;
         }
 
-        public void setMonthlyStats(List<MonthlyStats> monthlyStats) {
+        public final void setMonthlyStats(List<MonthlyStats> monthlyStats) {
             this.monthlyStats = monthlyStats;
         }
 
-        public Producer(Integer id, EnergyType energyType,
-                        Integer maxDistributors,
-                        Double priceKW, Integer energyPerDistributor) {
+        public Producer(final Integer id, final EnergyType energyType,
+                        final Integer maxDistributors,
+                        final Double priceKW, final Integer energyPerDistributor) {
                         this.id = id;
                         this.energyType = energyType;
                         this.maxDistributors = maxDistributors;
@@ -94,29 +100,34 @@ public class Producer extends Observable implements Entity {
                         this.monthlyStats = new ArrayList<>();
             }
 
-        // Setez noile date si notific observatorii
-        // Golesc listele de distribuitori ale unui producator
-        public void updateMonths(Integer energyPerDistributor) {
-            this.setEnergyPerDistributor(energyPerDistributor);
+    /**
+     * Setez noile date referitoare la energie si notific observatorii
+     * ca producatorului lor i s-au facut update-uri
+     * @param newEnergyPerDistributor valoare energiei noi,
+     *                             din update-ul lunar
+     */
+    public void updateMonths(Integer newEnergyPerDistributor) {
+            this.setEnergyPerDistributor(newEnergyPerDistributor);
             setChanged();
             notifyObservers();
-
-            //distributors.clear();
         }
 
-        // Scoate un distribuitor din lista
-        public void removeDistributor(Integer id) {
-            // Caut distribuitorul
+    /**
+     * Scoate un distribuitor din lista unui producator
+     * @param idDistributor -ul distribuitorului
+     */
+    public void removeDistributor(Integer idDistributor) {
+            // Caut distribuitorul in lista
             int ok = 0;
             int i;
             for (i = 0; i < distributors.size(); i++) {
-                if (distributors.get(i).getId().equals(id)) {
+                if (distributors.get(i).getId().equals(idDistributor)) {
                     ok = 1;
                     break;
                 }
             }
 
-            // daca l-am gasit
+            // Daca l-am gasit, il sterg
             if (ok == 1) {
                 distributors.remove(i);
             }
