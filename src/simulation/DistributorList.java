@@ -120,7 +120,9 @@ public class DistributorList {
     public void applyStrategyList(List<Producer> dataBasedProducers) {
         // Aplic strategia pentru toti distribuitorii
         for (Distributor distributor : distributors) {
-            distributor.applyStrategy(dataBasedProducers);
+            if (distributor.isUpdate()) {
+                distributor.applyStrategy(dataBasedProducers);
+            }
         }
     }
 
@@ -150,6 +152,7 @@ public class DistributorList {
                     for (Producer producer : distributor.getProducerList()) {
                         producer.removeDistributor(distributor.getId());
                     }
+
                     // actualizez strategia
                     applyStrategyList(dataBaseProducers);
 
@@ -162,6 +165,13 @@ public class DistributorList {
             }
         }
     }
+
+    public void setContractPriceList() {
+        for (Distributor distributor : distributors) {
+            distributor.setVarContractPrice(distributor.getContractPrice());
+        }
+    }
+
     @Override
     public String toString() {
         return "DistributorList{" +

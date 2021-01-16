@@ -46,8 +46,8 @@ public abstract class Strategy {
                 // Adaug in lista de returnat
                 returnProducers.add(myProducers.get(i));
 
-                i++;
             }
+            i++;
         }
         // Returnez lista de producatori din strategie pentru acel distribuitor
         return returnProducers;

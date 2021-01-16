@@ -159,7 +159,7 @@ public final class Simulation {
 
             DistributorOutputData distributorOutputData =
                     new DistributorOutputData(distributor.getId(), distributor.getEnergyNeededKW(),
-                                    distributor.getContractPrice(), distributor.getInitialBudget(),
+                                    distributor.getVarContractPrice(), distributor.getInitialBudget(),
                                 distributor.getProducerStrategy(),distributor.isBankrupt(), outContracts);
 
             output.getDistributors().add(distributorOutputData);
@@ -195,6 +195,7 @@ public final class Simulation {
                                   final Map<Integer, Distributor> distributorMap) {
         // Gasesc distribuitorul cu rata minima
         Distributor subscribeDistribuitor = distributors.findMinRate();
+
         Integer price = subscribeDistribuitor.getContractPrice();
 
         // Se fac update-urile la salarii
@@ -205,6 +206,7 @@ public final class Simulation {
 
         // Abonez consumatorii la el
         consumers.updateContracts(subscribeDistribuitor, price);
+
 
         // Platesc ratele si costurile de productie
         payRate(consumers, distributorMap);
@@ -251,8 +253,23 @@ public final class Simulation {
         // Aplic schimbul de costuri de productie
         distributorList.applyChangesCosts();
 
+
+        distributorList.setContractPriceList();
+
+
         // Se apeleaza ordinea operatiilor de la inceput de luna
         operationsStart(consumerList, distributorList, distributorMap);
+
+//
+//        System.out.print("");
+//        System.out.println("Numarul rundei: " + (turns - 1));
+//        for (Distributor distributor : distributors) {
+//            System.out.println(distributor.toString());
+//        }
+//
+//        for (Consumer consumer : consumers) {
+//            System.out.println(consumer.toString());
+//        }
 
         while (turns < input.getNumberOfTurns()) {
 
@@ -278,6 +295,8 @@ public final class Simulation {
 //            distributorList.applyChangesCosts();
 
 
+            distributorList.setContractPriceList();
+
             // Se apeleaza operatiile de la inceputul lunii
             operationsStart(consumerList, distributorList, distributorMap);
 
@@ -296,7 +315,7 @@ public final class Simulation {
 //            System.out.print("");
 //            System.out.println("Numarul rundei: " + (turns - 1));
 //            for (Distributor distributor : distributors) {
-//                System.out.println(distributor.toString());
+//                System.out.println( "PRET CONTRACT " + distributor.getVarContractPrice() + " "+ distributor.toString());
 //            }
 //
 //            for (Consumer consumer : consumers) {

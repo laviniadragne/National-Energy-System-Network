@@ -28,6 +28,7 @@ public class Distributor implements Entity, Observer {
     private EnergyChoiceStrategyType producerStrategy;
     private List<Producer> producerList;
     private boolean update;
+    private Integer contractPrice;
 
     public Integer getEnergyNeededKW() {
         return energyNeededKW;
@@ -173,6 +174,18 @@ public class Distributor implements Entity, Observer {
 
     public void setUpdate(boolean update) {
         this.update = update;
+    }
+
+    public void setInitialProductionCost(Integer initialProductionCost) {
+        this.initialProductionCost = initialProductionCost;
+    }
+
+    public Integer getVarContractPrice() {
+        return contractPrice;
+    }
+
+    public void setVarContractPrice(Integer contractPrice) {
+        this.contractPrice = contractPrice;
     }
 
     public Distributor(final Integer id, final Integer contractLength,
