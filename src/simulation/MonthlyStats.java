@@ -27,4 +27,12 @@ public class MonthlyStats {
         this.month = month;
         this.distributorsIds = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return "MonthlyStats{" +
+                "month=" + month +
+                ", distributorsIds=" + distributorsIds +
+                '}';
+    }
 }

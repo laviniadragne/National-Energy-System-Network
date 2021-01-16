@@ -155,6 +155,9 @@ public class DistributorList {
 
                     // actualizez costul de productie
                     applyChangesCosts();
+
+                    // L-am update-at
+                    distributor.setUpdate(false);
                 }
             }
         }

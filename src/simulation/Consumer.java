@@ -165,4 +165,16 @@ public class Consumer implements Entity {
         getContract().setRemainedContractMonths(actualMonths);
     }
 
+    @Override
+    public String toString() {
+        return "Consumer{" +
+                "id=" + id +
+                ", initialBudget=" + initialBudget +
+                ", monthlyIncome=" + monthlyIncome +
+                ", contract=" + contract +
+                ", isBankrupt=" + isBankrupt +
+                ", idOverdue=" + idOverdue +
+                ", priceOverdue=" + priceOverdue +
+                '}';
+    }
 }

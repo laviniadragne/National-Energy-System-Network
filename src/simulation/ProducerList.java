@@ -39,24 +39,18 @@ public class ProducerList {
         });
     }
 
-    public void addObservators() {
-        for (Producer producer : producers) {
-            for (Distributor distributor : producer.getDistributors()) {
-                producer.addObserver(distributor);
-            }
-        }
-    }
 
     public void updateMonthlyStats(Integer monthId) {
         for (Producer producer : producers) {
             MonthlyStats newMonth = new MonthlyStats(monthId);
+
             // Adaug in lista din luna respectiva toti distribuitorii
             // abonat la acel producator
             for (Distributor distributor : producer.getDistributors()) {
                 newMonth.getDistributorsIds().add(distributor.getId());
             }
+//            System.out.println(newMonth);
             producer.getMonthlyStats().add(newMonth);
         }
-
     }
 }

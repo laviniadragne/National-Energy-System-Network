@@ -190,7 +190,7 @@ public class Distributor implements Entity, Observer {
         this.energyNeededKW = energyNeededKW;
         this.producerStrategy = producerStrategy;
         this.producerList = new ArrayList<>();
-        this.update = false;
+        this.update = true;
     }
 
 
@@ -287,6 +287,10 @@ public class Distributor implements Entity, Observer {
 
     /**
      * Metoda aplica o strategie lunar pe baza de date a producatorilor
+     * In urma metodei distribuitorul va avea asignata o noua lista
+     * de producatori
+     * De asemenea, fiecare distribuitor este adaugat in lista de
+     * observatori a noului producator
      */
     public void applyStrategy(List<Producer> databasedProducers) {
 
@@ -314,10 +318,11 @@ public class Distributor implements Entity, Observer {
         producerList = newProducers;
 
         // Pentru fiecare producator adaug distribuitorul corespunzator
+        // Si il adaug in lista de observatori
         for (Producer producer : newProducers) {
             producer.getDistributors().add(this);
+            producer.addObserver(this);
         }
-
     }
 
     @Override

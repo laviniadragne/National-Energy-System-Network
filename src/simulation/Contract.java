@@ -88,4 +88,13 @@ public class Contract {
         this.distributorId = -1;
     }
 
+    @Override
+    public String toString() {
+        return "Contract{" +
+                "consumerId=" + consumerId +
+                ", price=" + price +
+                ", remainedContractMonths=" + remainedContractMonths +
+                ", distributorId=" + distributorId +
+                '}';
+    }
 }

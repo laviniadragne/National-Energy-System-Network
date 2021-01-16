@@ -97,6 +97,7 @@ public class Producer extends Observable implements Entity {
         // Setez noile date si notific observatorii
         public void updateMonths(Integer energyPerDistributor) {
             this.setEnergyPerDistributor(energyPerDistributor);
+            setChanged();
             notifyObservers();
         }
 

@@ -248,33 +248,8 @@ public final class Simulation {
         // Distribuitorii isi aleg producatorii
         distributorList.applyStrategyList(producerList.getProducers());
 
-        // Aplic pattern-ul Observatory
-        producerList.addObservators();
-
         // Aplic schimbul de costuri de productie
         distributorList.applyChangesCosts();
-
-
-//
-//        // Aplic strategia
-//        distributorList.applyStrategyList(producerList.getProducers());
-//
-//        // Aplic schimbul de costuri de productie
-//        distributorList.applyChangesCosts();
-//
-//        System.out.println("Lista cu distribuitorii si producatorii fiecaruia ");
-//        for (Distributor distributor : distributorList.getDistributors()) {
-//            System.out.println(distributor.getId() + ": ");
-//            System.out.print(distributor.getProducerList());
-//        }
-//
-//        System.out.println("Lista cu toti producatorii: ");
-//        for (Producer producer : producerList.getProducers()) {
-//            System.out.println(producer.toString());
-//        }
-
-
-
 
         // Se apeleaza ordinea operatiilor de la inceput de luna
         operationsStart(consumerList, distributorList, distributorMap);
@@ -287,6 +262,20 @@ public final class Simulation {
 
             // Se adauga noile update-uri la costurile distribuitorilor
             CreateDataBase.updateDistributors(actualMonth, distributorMap);
+
+//            for (Producer producer : producers) {
+//                producer.getDistributors().clear();
+//            }
+
+//            // Aplic strategia ca sa aleg producatorii
+//            // Distribuitorii isi aleg producatorii
+//            distributorList.applyStrategyList(producerList.getProducers());
+//
+//            // Aplic pattern-ul Observatory
+//            producerList.addObservators();
+//
+//            // Aplic schimbul de costuri de productie
+//            distributorList.applyChangesCosts();
 
 
             // Se apeleaza operatiile de la inceputul lunii
@@ -304,6 +293,19 @@ public final class Simulation {
             // ale fiecarui producator
             producerList.updateMonthlyStats(turns);
 
+//            System.out.print("");
+//            System.out.println("Numarul rundei: " + (turns - 1));
+//            for (Distributor distributor : distributors) {
+//                System.out.println(distributor.toString());
+//            }
+//
+//            for (Consumer consumer : consumers) {
+//                System.out.println(consumer.toString());
+//            }
+//
+//            for (Producer producer : producers) {
+//                System.out.println(producer.toString());
+//            }
         }
 
         return createOutput(consumers, distributors, producers);
