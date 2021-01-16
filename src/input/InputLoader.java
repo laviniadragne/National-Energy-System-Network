@@ -20,14 +20,6 @@ public final class InputLoader {
         this.inputPath = inputPath;
     }
 
-    /**
-     *
-     * @return calea catre fisierul de input
-     */
-    public String getInputPath() {
-        return inputPath;
-    }
-
 
     /**
      * Metoda citeste baza de date

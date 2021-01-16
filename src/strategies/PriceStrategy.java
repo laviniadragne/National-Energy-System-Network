@@ -22,7 +22,7 @@ public class PriceStrategy extends Strategy{
         ProducerList producerList = new ProducerList(myProducers);
 
         // Sortez corespunzator
-        producerList.sortGreenStrategy();
+        sortGreenStrategy(producerList.getProducers());
 
         return choiceSortedProducers(energyNeededKW, producerList.getProducers());
     }

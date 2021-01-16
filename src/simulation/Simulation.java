@@ -268,22 +268,6 @@ public final class Simulation {
         operationsStart(consumerList, distributorList, distributorMap, producerList);
 
 
-//        System.out.print("");
-//        System.out.println("Numarul rundei: " + (turns));
-//        System.out.println("---------CONSUMATORI---------");
-//
-//        for (Consumer consumer : consumers) {
-//            System.out.println(consumer.toString());
-//        }
-//
-//        System.out.println();
-//        System.out.println("---------DISTRIBUITORI----------");
-//        for (Distributor distributor : distributors) {
-//            System.out.println(distributor.getId() + " " + distributor.getProducerStrategy().label + " " + distributor.getProducerList());
-////            System.out.println(distributor.toString());
-//        }
-
-
         while (turns < input.getNumberOfTurns()) {
 
             // Se adauga noii consumatori
@@ -314,31 +298,6 @@ public final class Simulation {
             // ale fiecarui producator
             producerList.updateMonthlyStats(turns);
 
-
-//            System.out.println();
-//            System.out.println("Numarul rundei: " + (turns));
-//            System.out.println("---------CONSUMATORI---------");
-//
-//            for (Consumer consumer : consumers) {
-//                System.out.println(consumer.toString());
-//            }
-//
-//            System.out.println();
-//            System.out.println("---------DISTRIBUITORI----------");
-//            for (Distributor distributor : distributors) {
-//                System.out.println(distributor.getId() + " " + distributor.getProducerStrategy().label + " " + distributor.getProducerList());
-////                System.out.println("contract price: " + distributor.getVarContractPrice() + " " + distributor.toString());
-//            }
-//
-//            System.out.println();
-//            System.out.println("---------PRODUCATORI------------");
-//            for (Producer producer : producers) {
-//                System.out.println(producer.toString());
-//                for (Distributor distributor : producer.getDistributors()) {
-//                    System.out.print(distributor.getId() + " ");
-//                }
-//                System.out.println();
-//            }
         }
 
         return createOutput(consumers, distributors, producers);

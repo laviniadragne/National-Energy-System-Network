@@ -48,15 +48,4 @@ public class ProducerInputData {
     public void setEnergyPerDistributor(Integer energyPerDistributor) {
         this.energyPerDistributor = energyPerDistributor;
     }
-
-    @Override
-    public String toString() {
-        return "ProducerInputData{" +
-                "id=" + id +
-                ", energyType=" + energyType +
-                ", maxDistributors=" + maxDistributors +
-                ", priceKW=" + priceKW +
-                ", energyPerDistributor=" + energyPerDistributor +
-                '}';
-    }
 }

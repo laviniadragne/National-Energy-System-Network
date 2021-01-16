@@ -20,11 +20,4 @@ public class ProducerCostInputData {
         this.energyPerDistributor = energyPerDistributor;
     }
 
-    @Override
-    public String toString() {
-        return "ProducerCostInputData{" +
-                "id=" + id +
-                ", energyPerDistributor=" + energyPerDistributor +
-                '}';
-    }
 }

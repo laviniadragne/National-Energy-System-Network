@@ -3,7 +3,6 @@ package simulation;
 import input.ConsumerInputData;
 import input.Input;
 import input.MonthlyUpdates;
-import input.ProducerInputData;
 import utils.Constants;
 
 import java.util.HashMap;

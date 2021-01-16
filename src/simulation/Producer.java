@@ -123,16 +123,4 @@ public class Producer extends Observable implements Entity {
 
         }
 
-        @Override
-        public String toString() {
-            return "Producer{" +
-                    "id=" + id +
-//                    ", energyType=" + energyType +
-//                    ", maxDistributors=" + maxDistributors +
-//                    ", priceKW=" + priceKW +
-//                    ", energyPerDistributor=" + energyPerDistributor +
-//                    ", actualDistributors=" + actualDistributors +
-//                    ", distributors=" + distributors +
-                    '}';
-        }
 }

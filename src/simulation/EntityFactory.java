@@ -56,7 +56,6 @@ public final class EntityFactory {
                         ((DistributorInputData) entity).getEnergyNeededKW(),
                         ((DistributorInputData) entity).getProducerStrategy());
 
-//                        ((DistributorInputData) entity).getInitialProductionCost());
         }
         if (entityType.equals(Constants.PRODUCER)) {
             return new Producer(((ProducerInputData) entity).getId(),

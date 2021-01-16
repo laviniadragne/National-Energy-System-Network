@@ -139,7 +139,6 @@ public class DistributorList {
      *     în momentul în care unui distribuitor îi vine randul să își actualizeze producătorii,
      *     întâi se scoate acest distribuitor de la toți producătorii de la care lua energie și
      *     apoi se aplică strategia de alegere.
-     * @return
      */
     public void updateProducers(List<Producer> dataBaseProducers) {
         for (Distributor distributor : distributors) {
@@ -148,14 +147,6 @@ public class DistributorList {
                 // Daca trebuie facut update
                 if (distributor.isUpdate()) {
 
-//                    System.out.println("Distribuitorul are id-ul " + distributor.getId());
-//
-//                    // il scot de la toti producatorii de la care lua energie
-//                    for (Producer producer : distributor.getProducerList()) {
-//                        System.out.println( producer.getId() + " " + producer.getDistributors());
-//
-//                    }
-//
                     // il scot de la toti producatorii de la care lua energie
                     for (Producer producer : distributor.getProducerList()) {
                         producer.removeDistributor(distributor.getId());
@@ -167,17 +158,8 @@ public class DistributorList {
                         producer.setActualDistributors(actualDistributors);
                     }
 
-
-//                    // il scot de la toti producatorii de la care lua energie
-//                    for (Producer producer : distributor.getProducerList()) {
-//                        System.out.println( producer.getId() + " " + producer.getDistributors());
-//
-//                    }
-
+                    // Actualizez strategia
                     distributor.applyStrategy(dataBaseProducers);
-//
-//                    // actualizez strategia
-//                    applyStrategyList(dataBaseProducers);
 
                     // L-am update-at
                     distributor.setUpdate(false);

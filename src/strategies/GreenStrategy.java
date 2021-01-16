@@ -34,9 +34,10 @@ public class GreenStrategy extends Strategy {
         ProducerList producerRenewableList = new ProducerList(renewableProducers);
         ProducerList producerNonrenewableList = new ProducerList(nonrenewableProducers);
 
+
         // Sortez corespunzator
-        producerRenewableList.sortGreenStrategy();
-        producerNonrenewableList.sortGreenStrategy();
+        sortGreenStrategy(producerRenewableList.getProducers());
+        sortGreenStrategy(producerNonrenewableList.getProducers());
 
         // Lista myProducers va contine la inceput producatorii cu energie regenerabila
         // si apoi pe cei cu energie neregenerabila.

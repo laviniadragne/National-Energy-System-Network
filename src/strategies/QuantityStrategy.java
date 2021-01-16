@@ -22,7 +22,7 @@ public class QuantityStrategy extends Strategy{
         ProducerList producerList = new ProducerList(myProducers);
 
         // Sortez corespunzator
-        producerList.sortQuantityStrategy();
+        sortQuantityStrategy(producerList.getProducers());
 
         return choiceSortedProducers(energyNeededKW, producerList.getProducers());
 

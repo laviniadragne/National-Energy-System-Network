@@ -22,7 +22,7 @@ public class Distributor implements Entity, Observer {
     private Integer initialBudget;
     private Integer initialInfrastructureCost;
     private Integer initialProductionCost;
-    private List<Contract> contractList;
+    private final List<Contract> contractList;
     private boolean isBankrupt;
     private Integer energyNeededKW;
     private EnergyChoiceStrategyType producerStrategy;
@@ -48,10 +48,6 @@ public class Distributor implements Entity, Observer {
 
     public List<Producer> getProducerList() {
         return producerList;
-    }
-
-    public void setProducerList(List<Producer> producerList) {
-        this.producerList = producerList;
     }
 
     /**
@@ -143,14 +139,6 @@ public class Distributor implements Entity, Observer {
         this.initialInfrastructureCost = initialInfrastructureCost;
     }
 
-    /**
-     *
-     * @return Intoarce costul de productie a distribuitorului
-     */
-    public Integer getInitialProductionCost() {
-        return initialProductionCost;
-    }
-
 
     /**
      *
@@ -160,24 +148,12 @@ public class Distributor implements Entity, Observer {
         return contractList;
     }
 
-    /**
-     *
-     * Seteaza lista de contracte ale distribuitorului
-     */
-    public void setContractList(final List<Contract> contractList) {
-        this.contractList = contractList;
-    }
-
     public boolean isUpdate() {
         return update;
     }
 
     public void setUpdate(boolean update) {
         this.update = update;
-    }
-
-    public void setInitialProductionCost(Integer initialProductionCost) {
-        this.initialProductionCost = initialProductionCost;
     }
 
     public Integer getVarContractPrice() {

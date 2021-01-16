@@ -8,7 +8,7 @@ package output;
 public class ConsumerOutputData {
 
     private Integer id;
-    private boolean isBankrupt;
+    private final boolean isBankrupt;
     private Integer budget;
 
     /**
@@ -33,14 +33,6 @@ public class ConsumerOutputData {
      */
     public boolean isBankrupt() {
         return isBankrupt;
-    }
-
-    /**
-     *
-     * Seteaza starea unui consumator
-     */
-    public void setBankrupt(final boolean bankrupt) {
-        this.isBankrupt = bankrupt;
     }
 
     /**

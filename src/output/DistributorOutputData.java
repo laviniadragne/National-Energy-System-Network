@@ -15,7 +15,7 @@ public class DistributorOutputData {
     private Integer contractCost;
     private Integer budget;
     private EnergyChoiceStrategyType producerStrategy;
-    private boolean isBankrupt;
+    private final boolean isBankrupt;
     private List<ContractOutputData> contracts;
 
     /**
@@ -56,14 +56,6 @@ public class DistributorOutputData {
      */
     public boolean isBankrupt() {
         return isBankrupt;
-    }
-
-    /**
-     *
-     * Seteaza starea unui distribuitor
-     */
-    public void setBankrupt(final boolean bankrupt) {
-        isBankrupt = bankrupt;
     }
 
     /**

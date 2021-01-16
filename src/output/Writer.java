@@ -26,14 +26,6 @@ public final class Writer {
     }
 
     /**
-     *
-     * @return intoarce calea catre fisierul de output
-     */
-    public String getInputPath() {
-        return outputPath;
-    }
-
-    /**
      * Scrie in format JSON datele
      * @param output clasa cu datele ce trebuie scrise
      */

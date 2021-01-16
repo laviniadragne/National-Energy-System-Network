@@ -46,12 +46,4 @@ public class MonthlyUpdates {
         this.producerChanges = producerChanges;
     }
 
-    @Override
-    public String toString() {
-        return '{' +
-                "newConsumers=" + newConsumers +
-                ", distributorChanges=" + distributorChanges +
-                ", producerChanges=" + producerChanges +
-                '}';
-    }
 }

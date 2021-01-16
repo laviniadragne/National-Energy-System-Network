@@ -8,7 +8,11 @@ package input;
 
 public class CostInputData {
     private Integer id;
-    private Integer infrastructureCost;
+    private final Integer infrastructureCost;
+
+    public CostInputData() {
+        this.infrastructureCost = 0;
+    }
 
     /**
      *
@@ -33,18 +37,4 @@ public class CostInputData {
         return infrastructureCost;
     }
 
-    /**
-     * Seteaza costul infrastructurii
-     */
-    public void setInfrastructureCost(final Integer infrastructureCost) {
-        this.infrastructureCost = infrastructureCost;
-    }
-
-    @Override
-    public String toString() {
-        return "CostInputData{" +
-                "id=" + id +
-                ", infrastructureCost=" + infrastructureCost +
-                '}';
-    }
 }
