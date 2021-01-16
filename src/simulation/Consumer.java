@@ -142,6 +142,7 @@ public class Consumer implements Entity {
         // Nu e restant nimanui initial
         this.idOverdue = -1;
         this.priceOverdue = -1;
+        // Nu are niciun contract initial
     }
 
     /**

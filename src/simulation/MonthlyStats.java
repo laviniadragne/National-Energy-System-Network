@@ -1,6 +1,7 @@
 package simulation;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MonthlyStats {
@@ -26,6 +27,13 @@ public class MonthlyStats {
     public MonthlyStats(Integer month) {
         this.month = month;
         this.distributorsIds = new ArrayList<>();
+    }
+
+    /*
+    Sorteaza lista de id-uri
+     */
+    public void sortId() {
+        distributorsIds.sort(Comparator.comparingInt(m -> m));
     }
 
     @Override

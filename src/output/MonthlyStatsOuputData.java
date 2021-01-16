@@ -26,4 +26,5 @@ public class MonthlyStatsOuputData {
         this.month = month;
         this.distributorsIds = distributorsIds;
     }
+
 }

@@ -330,6 +330,9 @@ public class Distributor implements Entity, Observer {
         // Actualizez lista cu noii producatori
         producerList = newProducers;
 
+        // Am aplicat deja strategia
+        this.setUpdate(false);
+
         // Pentru fiecare producator adaug distribuitorul corespunzator
         // Si il adaug in lista de observatori
         for (Producer producer : newProducers) {
@@ -342,15 +345,15 @@ public class Distributor implements Entity, Observer {
     public String toString() {
         return "Distributor{" +
                 "id=" + id +
-                ", contractLength=" + contractLength +
-                ", initialBudget=" + initialBudget +
-                ", initialInfrastructureCost=" + initialInfrastructureCost +
-                ", initialProductionCost=" + initialProductionCost +
-                ", contractList=" + contractList +
-                ", isBankrupt=" + isBankrupt +
-                ", energyNeededKW=" + energyNeededKW +
-                ", producerStrategy=" + producerStrategy +
-                ", update=" + update +
+//                ", contractLength=" + contractLength +
+//                ", initialBudget=" + initialBudget +
+//                ", initialInfrastructureCost=" + initialInfrastructureCost +
+//                ", initialProductionCost=" + initialProductionCost +
+//                ", contractList=" + contractList +
+//                ", isBankrupt=" + isBankrupt +
+//                ", energyNeededKW=" + energyNeededKW +
+//                ", producerStrategy=" + producerStrategy +
+//                ", update=" + update +
                 '}';
     }
 

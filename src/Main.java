@@ -20,7 +20,7 @@ public final class Main {
      */
     public static void main(final String[] args) throws Exception {
         // Creez inputul
-//        InputLoader inputLoader = new InputLoader("/home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/checker/resources/in/basic_15.json");
+//        InputLoader inputLoader = new InputLoader("/home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/checker/resources/in/complex_5.json");
         InputLoader inputLoader = new InputLoader(args[0]);
         Input input = inputLoader.readData();
 
@@ -31,7 +31,7 @@ public final class Main {
         Output output =  Simulation.getSimulation(input);
 
         // Scriu output-ul
-//        Writer writer = new Writer("/home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/checker/resources/out/basic_15.json");
+//        Writer writer = new Writer("/home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/checker/resources/out/complex_5.json");
         Writer writer = new Writer(args[1]);
         writer.writeData(output);
     }

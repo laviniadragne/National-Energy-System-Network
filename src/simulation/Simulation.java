@@ -22,17 +22,22 @@ public final class Simulation {
 
     /**
     Scoate din joc distribuitori si sterge contractele cu acestia din liste
-    consumatorilor
+    consumatorilor, dar ii si scoate din listele producatorilor
      */
     public static void updateDistributors(final DistributorList distributorList,
-                                          final ConsumerList consumersList) {
+                                          final ConsumerList consumersList,
+                                          final ProducerList producerList) {
         for (Distributor distributor : distributorList.getDistributors()) {
             Integer buget = distributor.getInitialBudget();
             if (buget < 0) {
                 // Eliminat din joc
                 distributor.setBankrupt(true);
-                // Caut in toate contractele consumatorilor si sterg distribuitorul,
+
+                // Caut in toate contractele consumatorilor si sterg distribuitorul
                 consumersList.deleteDistributor(distributor);
+
+                // Caut in toate listele producatorilor si sterg distribuitorul
+                producerList.deleteDistributor(distributor);
             }
         }
     }
@@ -67,6 +72,7 @@ public final class Simulation {
                     }
                 // Este restant
                 } else {
+
                     Integer mustPay = (int) Math.round(Math.floor(Constants.OVERDUE_FACTOR
                             * consumer.getPriceOverdue())) + consumer.getContract().getPrice();
 
@@ -129,6 +135,7 @@ public final class Simulation {
         }
     }
 
+
     /**
      * Creeaza o clasa de Output pentru a scrie rezultatele, pe baza a 2 liste
      * de consumatori si distribuitori
@@ -169,6 +176,7 @@ public final class Simulation {
             // Lista de distribuitori in fiecare luna
             List<MonthlyStatsOuputData> monthlyStatsOuputDataList = new ArrayList<>();
             for (MonthlyStats monthlyStats : producer.getMonthlyStats()) {
+                monthlyStats.sortId();
                 MonthlyStatsOuputData monthlyStatsOuputData
                         = new MonthlyStatsOuputData(monthlyStats.getMonth(),
                             monthlyStats.getDistributorsIds());
@@ -192,11 +200,15 @@ public final class Simulation {
      */
     public static void operationsStart(final ConsumerList consumers,
                                   final DistributorList distributors,
-                                  final Map<Integer, Distributor> distributorMap) {
+                                  final Map<Integer, Distributor> distributorMap,
+                                       final ProducerList producers) {
         // Gasesc distribuitorul cu rata minima
         Distributor subscribeDistribuitor = distributors.findMinRate();
 
         Integer price = subscribeDistribuitor.getContractPrice();
+
+        // Setez pretul la contracte
+        distributors.setContractPriceList();
 
         // Se fac update-urile la salarii
         consumers.addSalary();
@@ -206,7 +218,6 @@ public final class Simulation {
 
         // Abonez consumatorii la el
         consumers.updateContracts(subscribeDistribuitor, price);
-
 
         // Platesc ratele si costurile de productie
         payRate(consumers, distributorMap);
@@ -219,7 +230,7 @@ public final class Simulation {
         failedContract(consumers.getConsumers(), distributors.getDistributors());
 
         // Scot din joc distribuitorii
-        updateDistributors(distributors, consumers);
+        updateDistributors(distributors, consumers, producers);
     }
 
     /**
@@ -253,23 +264,25 @@ public final class Simulation {
         // Aplic schimbul de costuri de productie
         distributorList.applyChangesCosts();
 
-
-        distributorList.setContractPriceList();
-
-
         // Se apeleaza ordinea operatiilor de la inceput de luna
-        operationsStart(consumerList, distributorList, distributorMap);
+        operationsStart(consumerList, distributorList, distributorMap, producerList);
 
-//
+
 //        System.out.print("");
-//        System.out.println("Numarul rundei: " + (turns - 1));
-//        for (Distributor distributor : distributors) {
-//            System.out.println(distributor.toString());
-//        }
+//        System.out.println("Numarul rundei: " + (turns));
+//        System.out.println("---------CONSUMATORI---------");
 //
 //        for (Consumer consumer : consumers) {
 //            System.out.println(consumer.toString());
 //        }
+//
+//        System.out.println();
+//        System.out.println("---------DISTRIBUITORI----------");
+//        for (Distributor distributor : distributors) {
+//            System.out.println(distributor.getId() + " " + distributor.getProducerStrategy().label + " " + distributor.getProducerList());
+////            System.out.println(distributor.toString());
+//        }
+
 
         while (turns < input.getNumberOfTurns()) {
 
@@ -280,25 +293,14 @@ public final class Simulation {
             // Se adauga noile update-uri la costurile distribuitorilor
             CreateDataBase.updateDistributors(actualMonth, distributorMap);
 
-//            for (Producer producer : producers) {
-//                producer.getDistributors().clear();
-//            }
-
-//            // Aplic strategia ca sa aleg producatorii
-//            // Distribuitorii isi aleg producatorii
-//            distributorList.applyStrategyList(producerList.getProducers());
-//
-//            // Aplic pattern-ul Observatory
-//            producerList.addObservators();
-//
-//            // Aplic schimbul de costuri de productie
-//            distributorList.applyChangesCosts();
-
-
-            distributorList.setContractPriceList();
+            // actualizez costurile de productie
+            distributorList.applyChangesCosts();
 
             // Se apeleaza operatiile de la inceputul lunii
-            operationsStart(consumerList, distributorList, distributorMap);
+            operationsStart(consumerList, distributorList, distributorMap, producerList);
+
+//            System.out.println("Numarul rundei: " + (turns));
+
 
             // Operatiile din timpul lunii
             // Se face update la Producatori
@@ -312,18 +314,30 @@ public final class Simulation {
             // ale fiecarui producator
             producerList.updateMonthlyStats(turns);
 
-//            System.out.print("");
-//            System.out.println("Numarul rundei: " + (turns - 1));
-//            for (Distributor distributor : distributors) {
-//                System.out.println( "PRET CONTRACT " + distributor.getVarContractPrice() + " "+ distributor.toString());
-//            }
+
+//            System.out.println();
+//            System.out.println("Numarul rundei: " + (turns));
+//            System.out.println("---------CONSUMATORI---------");
 //
 //            for (Consumer consumer : consumers) {
 //                System.out.println(consumer.toString());
 //            }
 //
+//            System.out.println();
+//            System.out.println("---------DISTRIBUITORI----------");
+//            for (Distributor distributor : distributors) {
+//                System.out.println(distributor.getId() + " " + distributor.getProducerStrategy().label + " " + distributor.getProducerList());
+////                System.out.println("contract price: " + distributor.getVarContractPrice() + " " + distributor.toString());
+//            }
+//
+//            System.out.println();
+//            System.out.println("---------PRODUCATORI------------");
 //            for (Producer producer : producers) {
 //                System.out.println(producer.toString());
+//                for (Distributor distributor : producer.getDistributors()) {
+//                    System.out.print(distributor.getId() + " ");
+//                }
+//                System.out.println();
 //            }
         }
 

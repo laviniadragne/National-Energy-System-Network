@@ -148,16 +148,36 @@ public class DistributorList {
                 // Daca trebuie facut update
                 if (distributor.isUpdate()) {
 
+//                    System.out.println("Distribuitorul are id-ul " + distributor.getId());
+//
+//                    // il scot de la toti producatorii de la care lua energie
+//                    for (Producer producer : distributor.getProducerList()) {
+//                        System.out.println( producer.getId() + " " + producer.getDistributors());
+//
+//                    }
+//
                     // il scot de la toti producatorii de la care lua energie
                     for (Producer producer : distributor.getProducerList()) {
                         producer.removeDistributor(distributor.getId());
+                        producer.deleteObserver(distributor);
+
+                        // Micsorez numarul de distribuitori actuali ai unui producator
+                        Integer actualDistributors =  producer.getActualDistributors();
+                        actualDistributors--;
+                        producer.setActualDistributors(actualDistributors);
                     }
 
-                    // actualizez strategia
-                    applyStrategyList(dataBaseProducers);
 
-                    // actualizez costul de productie
-                    applyChangesCosts();
+//                    // il scot de la toti producatorii de la care lua energie
+//                    for (Producer producer : distributor.getProducerList()) {
+//                        System.out.println( producer.getId() + " " + producer.getDistributors());
+//
+//                    }
+
+                    distributor.applyStrategy(dataBaseProducers);
+//
+//                    // actualizez strategia
+//                    applyStrategyList(dataBaseProducers);
 
                     // L-am update-at
                     distributor.setUpdate(false);
@@ -171,6 +191,7 @@ public class DistributorList {
             distributor.setVarContractPrice(distributor.getContractPrice());
         }
     }
+
 
     @Override
     public String toString() {

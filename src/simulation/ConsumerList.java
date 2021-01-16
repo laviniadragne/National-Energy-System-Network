@@ -60,7 +60,9 @@ public class ConsumerList {
                 newContract.setDistributorId(distributor.getId());
                 // Adaug distribuitorului noul contract
                 distributor.getContractList().add(newContract);
+                // Adaug consumatorului contractul
                 consumer.setContract(newContract);
+
             }
         }
     }

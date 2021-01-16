@@ -47,10 +47,31 @@ public class ProducerList {
             // Adaug in lista din luna respectiva toti distribuitorii
             // abonat la acel producator
             for (Distributor distributor : producer.getDistributors()) {
-                newMonth.getDistributorsIds().add(distributor.getId());
+                if (!newMonth.getDistributorsIds().contains(distributor.getId())) {
+                    newMonth.getDistributorsIds().add(distributor.getId());
+                }
             }
-//            System.out.println(newMonth);
-            producer.getMonthlyStats().add(newMonth);
+                producer.getMonthlyStats().add(newMonth);
+        }
+    }
+
+    public void deleteDistributor(Distributor distributor) {
+        for (Producer producer : producers) {
+            int i;
+            int ok = 0;
+            // Caut in lista de distribuitori a fiecarui producator
+            // pe respectivul, dupa id
+            for (i = 0; i < producer.getDistributors().size(); i++) {
+                if (distributor.getId().equals(producer.getDistributors().get(i).getId())) {
+                    ok = 1;
+                    break;
+                }
+            }
+            // Era prezent in lista, il sterg si din listele de observatori
+            if (ok == 1) {
+                producer.getDistributors().remove(i);
+                producer.deleteObserver(distributor);
+            }
         }
     }
 }

@@ -95,10 +95,13 @@ public class Producer extends Observable implements Entity {
             }
 
         // Setez noile date si notific observatorii
+        // Golesc listele de distribuitori ale unui producator
         public void updateMonths(Integer energyPerDistributor) {
             this.setEnergyPerDistributor(energyPerDistributor);
             setChanged();
             notifyObservers();
+
+            //distributors.clear();
         }
 
         // Scoate un distribuitor din lista
@@ -124,12 +127,12 @@ public class Producer extends Observable implements Entity {
         public String toString() {
             return "Producer{" +
                     "id=" + id +
-                    ", energyType=" + energyType +
-                    ", maxDistributors=" + maxDistributors +
-                    ", priceKW=" + priceKW +
-                    ", energyPerDistributor=" + energyPerDistributor +
-                    ", actualDistributors=" + actualDistributors +
-                    ", distributors=" + distributors +
+//                    ", energyType=" + energyType +
+//                    ", maxDistributors=" + maxDistributors +
+//                    ", priceKW=" + priceKW +
+//                    ", energyPerDistributor=" + energyPerDistributor +
+//                    ", actualDistributors=" + actualDistributors +
+//                    ", distributors=" + distributors +
                     '}';
         }
 }
