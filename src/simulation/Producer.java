@@ -9,8 +9,8 @@ import java.util.Observable;
 /**
  * Clasa contine informatiile despre un producator
  * folosit in simularea jocului
- * Ea va fi, in cadrul simularii, un observator
- * pentru un producator
+ * Ea va fi, in cadrul simularii, un observabil
+ * pentru distribuitori.
  */
 public class Producer extends Observable implements Entity {
 

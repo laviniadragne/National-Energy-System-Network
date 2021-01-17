@@ -11,71 +11,35 @@ public class Contract {
     private Integer remainedContractMonths;
     private Integer distributorId;
 
-    /**
-     *
-     * @return Intoarce id-ul distribuitorului la care este facut
-     * contractul
-     */
-    public Integer getDistributorId() {
+    public final Integer getDistributorId() {
         return distributorId;
     }
 
-    /**
-     *
-     * Seteaza id-ul distribuitorului la care este facut
-     * contractul
-     */
-    public void setDistributorId(final Integer distributorId) {
+    public final void setDistributorId(final Integer distributorId) {
         this.distributorId = distributorId;
     }
 
-    /**
-     *
-     * @return Intoarce id-ul consumatorului care face
-     * contractul
-     */
-    public Integer getConsumerId() {
+    public final Integer getConsumerId() {
         return consumerId;
     }
 
-    /**
-     *
-     * Seteaza id-ul consumatorului care face
-     * contractul
-     */
-    public void setConsumerId(final Integer consumerId) {
+    public final void setConsumerId(final Integer consumerId) {
         this.consumerId = consumerId;
     }
 
-    /**
-     *
-     * @return Intoarce pretul contractul
-     */
-    public Integer getPrice() {
+    public final Integer getPrice() {
         return price;
     }
 
-    /**
-     *
-     * Seteaza pretul contractul
-     */
-    public void setPrice(final Integer price) {
+    public final void setPrice(final Integer price) {
         this.price = price;
     }
 
-    /**
-     *
-     * @return Intoarce numarul de luni ramase de plata
-     */
-    public Integer getRemainedContractMonths() {
+    public final Integer getRemainedContractMonths() {
         return remainedContractMonths;
     }
 
-    /**
-     *
-     * Seteaza numarul de luni ramase de plata
-     */
-    public void setRemainedContractMonths(final Integer remainedContractMonths) {
+    public final void setRemainedContractMonths(final Integer remainedContractMonths) {
         this.remainedContractMonths = remainedContractMonths;
     }
 

@@ -10,7 +10,7 @@ import utils.Constants;
  * si design pattern-ul singleton, putand
  * fi creat un singur obiect de acest tip.
  * Ea este folosita pentru a crea entitati
- * de tip consumator sau distribuitor.
+ * de tip consumator, distribuitor sau producator.
  */
 public final class EntityFactory {
 
@@ -37,7 +37,7 @@ public final class EntityFactory {
      * @param entityType tipul de entitate pe care trebuie sa-l creeze
      * @param entity informatia pe care trebuie sa o
      *               atribuie entitatii create
-     * @return intoarce un obiect de tip distribuitor sau consumator
+     * @return intoarce un obiect de tip distribuitor, consumator sau producator
      * sau o exceptie in cazul in care i se cere sa creeze un tip de entitate
      * inca necunoscut
      */

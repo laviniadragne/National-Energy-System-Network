@@ -199,11 +199,14 @@ public final class Simulation {
      * Ordinea de efectuare a operatiilor de la inceputul lunii
      * @param consumers clasa cu o lista de consumatori
      * @param distributors clasa cu o lista de distribuitori
+     * @param producers clasa cu lista de producatori
+     * @param distributorMap dictionar cu key id-ul distribuitorului
+     *                       si value obiectul in sine
      */
-    public static void operationsStart(final ConsumerList consumers,
-                                  final DistributorList distributors,
-                                  final Map<Integer, Distributor> distributorMap,
-                                       final ProducerList producers) {
+    public static void beginningMonth(final ConsumerList consumers,
+                                      final DistributorList distributors,
+                                      final Map<Integer, Distributor> distributorMap,
+                                      final ProducerList producers) {
         // Gasesc distribuitorul cu rata minima
         Distributor subscribeDistribuitor = distributors.findMinRate();
 
@@ -259,7 +262,7 @@ public final class Simulation {
         ProducerList producerList = new ProducerList(producers);
 
 
-        // Aplic strategia ca sa aleg producatorii
+        // Aplic strategia ca sa aleg producatorii, pe toata lista de distribuitori
         // Distribuitorii isi aleg producatorii
         distributorList.applyStrategyList(producerList.getProducers());
 
@@ -267,7 +270,7 @@ public final class Simulation {
         distributorList.applyChangesCosts();
 
         // Se apeleaza ordinea operatiilor de la inceput de luna
-        operationsStart(consumerList, distributorList, distributorMap, producerList);
+        beginningMonth(consumerList, distributorList, distributorMap, producerList);
 
 
         // Simularea din fiecare luna
@@ -284,14 +287,15 @@ public final class Simulation {
             distributorList.applyChangesCosts();
 
             // Se apeleaza operatiile de la inceputul lunii
-            operationsStart(consumerList, distributorList, distributorMap, producerList);
+            beginningMonth(consumerList, distributorList, distributorMap, producerList);
 
             // Operatiile din timpul lunii
             // Se face update la Producatori
             CreateDataBase.updateProducers(actualMonth, producerMap);
 
             // Operatiile de la finalul lunii
-            distributorList.updateProducers(producers);
+            // Se aplica strategiile de alegere, daca e cazul
+            distributorList.chooseProducers(producers);
 
             turns++;
             // Fac update la listele de distribuitori din acea luna

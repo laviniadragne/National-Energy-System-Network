@@ -10,51 +10,27 @@ public class ContractOutputData {
     private Integer price;
     private Integer remainedContractMonths;
 
-    /**
-     *
-     * @return Intoarce id-ul unui consumator
-     */
-    public Integer getConsumerId() {
+    public final Integer getConsumerId() {
         return consumerId;
     }
 
-    /**
-     *
-     * Seteaza id-ul unui consumator
-     */
-    public void setConsumerId(final Integer consumerId) {
+    public final void setConsumerId(final Integer consumerId) {
         this.consumerId = consumerId;
     }
 
-    /**
-     *
-     * @return Intoarce pretul unui contract
-     */
-    public Integer getPrice() {
+    public final Integer getPrice() {
         return price;
     }
 
-    /**
-     *
-     * Seteaza pretul unui contract
-     */
-    public void setPrice(final Integer price) {
+    public final void setPrice(final Integer price) {
         this.price = price;
     }
 
-    /**
-     *
-     * @return Intoarce numarul de luni ramase din contract
-     */
-    public Integer getRemainedContractMonths() {
+    public final Integer getRemainedContractMonths() {
         return remainedContractMonths;
     }
 
-    /**
-     *
-     * Seteaza numarul de luni ramase din contract
-     */
-    public void setRemainedContractMonths(final Integer remainedContractMonths) {
+    public final void setRemainedContractMonths(final Integer remainedContractMonths) {
         this.remainedContractMonths = remainedContractMonths;
     }
 

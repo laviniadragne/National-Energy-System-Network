@@ -11,19 +11,11 @@ public class DistributorList {
 
     private List<Distributor> distributors;
 
-    /**
-     *
-     * @return Intoarce lista de distribuitori
-     */
-    public List<Distributor> getDistributors() {
+    public final List<Distributor> getDistributors() {
         return distributors;
     }
 
-    /**
-     *
-     * Seteaza lista de distribuitori
-     */
-    public void setDistributors(final List<Distributor> distributors) {
+    public final void setDistributors(final List<Distributor> distributors) {
         this.distributors = distributors;
     }
 
@@ -38,13 +30,10 @@ public class DistributorList {
     public int firstNonBankrupt() {
         int i = 0;
         // Gasesc primul distribuitor nefalimentar
-        while (distributors.get(i).isBankrupt() && i < distributors.size()) {
+        while (distributors.get(i).isBankrupt()) {
             i++;
         }
         // Toti distribuitorii sunt falimentari
-        if (i >= distributors.size()) {
-            return -1;
-        }
         return i;
     }
 
@@ -150,14 +139,14 @@ public class DistributorList {
      *  își actualizeze producătorii, întâi se scoate acest distribuitor de la toți
      *  producătorii de la care lua energie și apoi se aplică strategia de alegere.
      */
-    public void updateProducers(List<Producer> dataBaseProducers) {
+    public void chooseProducers(List<Producer> dataBaseProducers) {
         for (Distributor distributor : distributors) {
             // Daca e inca in joc
             if (!distributor.isBankrupt()) {
                 // Daca trebuie facut update
                 if (distributor.isUpdate()) {
 
-                    // il scot de la toti producatorii de la care lua energie
+                    // Il scot de la toti producatorii de la care lua energie
                     for (Producer producer : distributor.getProducerList()) {
                         producer.removeDistributor(distributor.getId());
                         producer.deleteObserver(distributor);

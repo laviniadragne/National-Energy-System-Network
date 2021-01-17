@@ -10,7 +10,6 @@ public interface Entity {
     boolean isBankrupt = false;
 
     /**
-     *
      * @return Intoarce id-ul entitatii
      */
     default Integer getId() {
@@ -18,7 +17,6 @@ public interface Entity {
     }
 
     /**
-     *
      * @return Intoarce bugetul entitatii
      */
     default Integer getInitialBudget() {
@@ -26,7 +24,6 @@ public interface Entity {
     }
 
     /**
-     *
      * @return Intoarce starea entitatii
      */
     default boolean isBankrupt() {

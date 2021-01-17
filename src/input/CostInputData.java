@@ -14,26 +14,15 @@ public class CostInputData {
         this.infrastructureCost = 0;
     }
 
-    /**
-     *
-     * @return Intoarce id-ul unui distribuitor
-     */
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     * Seteaza id-ul
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce costul infrastructurii
-     */
-    public Integer getInfrastructureCost() {
+    public final Integer getInfrastructureCost() {
         return infrastructureCost;
     }
 

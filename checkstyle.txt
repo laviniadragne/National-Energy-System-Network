@@ -1,8 +1,9 @@
 Starting audit...
+[ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/simulation/Distributor.java:3:18: Using the '.*' form of import should be avoided - strategies.*. [AvoidStarImport]
 [ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/simulation/Simulation.java:5:14: Using the '.*' form of import should be avoided - output.*. [AvoidStarImport]
 [ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/simulation/Entity.java:8:13: Name 'id' must match pattern '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'. [ConstantName]
 [ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/simulation/Entity.java:9:13: Name 'initialBudget' must match pattern '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'. [ConstantName]
 [ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/simulation/Entity.java:10:13: Name 'isBankrupt' must match pattern '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'. [ConstantName]
 [ERROR] /home/lavinia/Desktop/POO/Proiect/proiect-etapa2/proiect-etapa2-energy-system/./src/strategies/EnergyChoiceStrategyType.java:10:25: Variable 'label' must be private and have accessor methods. [VisibilityModifier]
 Audit done.
-Checkstyle ends with 5 errors.
+Checkstyle ends with 6 errors.

@@ -18,7 +18,6 @@ public final class Writer {
     private final String outputPath;
 
     /**
-     *
      * @param outputPath calea catre fisierul de output
      */
     public Writer(final String outputPath) {

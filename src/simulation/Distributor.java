@@ -1,9 +1,6 @@
 package simulation;
 
-import strategies.EnergyChoiceStrategyType;
-import strategies.GreenStrategy;
-import strategies.PriceStrategy;
-import strategies.QuantityStrategy;
+import strategies.*;
 import utils.Constants;
 
 import java.util.ArrayList;
@@ -50,101 +47,50 @@ public class Distributor implements Entity, Observer {
         return producerList;
     }
 
-    /**
-     *
-     * @return Intoarce starea distribuitorului
-     */
     @Override
-    public boolean isBankrupt() {
+    public final boolean isBankrupt() {
         return isBankrupt;
     }
 
-
-    /**
-     *
-     * Seteaza starea distribuitorului
-     */
-    public void setBankrupt(final boolean bankrupt) {
+    public final void setBankrupt(final boolean bankrupt) {
         isBankrupt = bankrupt;
     }
 
-
-    /**
-     *
-     * @return Intoarce id-ul distribuitorului
-     */
     @Override
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-
-    /**
-     *
-     * Seteaza id-ul distribuitorului
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-
-    /**
-     *
-     * @return Intoarce bugetul initial distribuitorului
-     */
     @Override
-    public Integer getInitialBudget() {
+    public final Integer getInitialBudget() {
         return initialBudget;
     }
 
-
-    /**
-     *
-     * Seteaza bugetul initial distribuitorului
-     */
-    public void setInitialBudget(final Integer initialBudget) {
+    public final void setInitialBudget(final Integer initialBudget) {
         this.initialBudget = initialBudget;
     }
 
-
-    /**
-     *
-     * @return Intoarce lungimea contractului distribuitorului
-     */
-    public Integer getContractLength() {
+    public final Integer getContractLength() {
         return contractLength;
     }
 
-    /**
-     *
-     * Seteaza lungimea contractului distribuitorului
-     */
-    public void setContractLength(final Integer contractLength) {
+    public final void setContractLength(final Integer contractLength) {
         this.contractLength = contractLength;
     }
 
-    /**
-     *
-     * @return Intoarce costul infrastructurii distribuitorului
-     */
-    public Integer getInitialInfrastructureCost() {
+    public final Integer getInitialInfrastructureCost() {
         return initialInfrastructureCost;
     }
 
-    /**
-     *
-     * Seteaza costul infrastructurii distribuitorului
-     */
-    public void setInitialInfrastructureCost(final Integer initialInfrastructureCost) {
+    public final void setInitialInfrastructureCost(final Integer initialInfrastructureCost) {
         this.initialInfrastructureCost = initialInfrastructureCost;
     }
 
-
-    /**
-     *
-     * @return Intoarce lista de contracte ale distribuitorului
-     */
-    public List<Contract> getContractList() {
+    public final List<Contract> getContractList() {
         return contractList;
     }
 
@@ -184,7 +130,6 @@ public class Distributor implements Entity, Observer {
 
 
     /**
-     *
      * @return Profitul din acea luna
      */
     public Integer getProfit() {
@@ -194,7 +139,6 @@ public class Distributor implements Entity, Observer {
     }
 
     /**
-     *
      * @return Pretul contractului oferit de acel distribuitor
      */
     public Integer getContractPrice() {
@@ -215,7 +159,6 @@ public class Distributor implements Entity, Observer {
     }
 
     /**
-     *
      * @return Costul din acea luna
      */
     public Integer getCost() {
@@ -286,17 +229,17 @@ public class Distributor implements Entity, Observer {
 
         List<Producer> newProducers = new ArrayList<>();
         if (producerStrategy.label.equals(Constants.GREEN)) {
-            GreenStrategy greenStrategy = new GreenStrategy();
+            Strategy greenStrategy = new GreenStrategy();
             newProducers = greenStrategy.chooseProducers(databasedProducers,
                                                         energyNeededKW);
         } else {
             if (producerStrategy.label.equals(Constants.QUANTITY)) {
-                QuantityStrategy quantityStrategy = new QuantityStrategy();
+                Strategy quantityStrategy = new QuantityStrategy();
                 newProducers = quantityStrategy.chooseProducers(databasedProducers,
                                                                 energyNeededKW);
             } else {
                 if (producerStrategy.label.equals(Constants.PRICE)) {
-                    PriceStrategy priceStrategy = new PriceStrategy();
+                    Strategy priceStrategy = new PriceStrategy();
                     newProducers = priceStrategy.chooseProducers(databasedProducers,
                                                                 energyNeededKW);
                 }

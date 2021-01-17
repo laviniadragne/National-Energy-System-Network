@@ -10,48 +10,27 @@ public class ConsumerInputData {
     private Integer initialBudget;
     private Integer monthlyIncome;
 
-    /**
-     *
-     * @return Intoarce id-ul unui consumator
-     */
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     * Seteaza id-ul unui consumator
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce bugetul unui consumat
-     */
-    public Integer getInitialBudget() {
+    public final Integer getInitialBudget() {
         return initialBudget;
     }
 
-    /**
-     * Seteaza bugetul unui consumator
-     */
-    public void setInitialBudget(final Integer initialBudget) {
+    public final void setInitialBudget(final Integer initialBudget) {
         this.initialBudget = initialBudget;
     }
 
-    /**
-     *
-     * @return Intoarce numarul de luni din contract ale unui consumator
-     */
-    public Integer getMonthlyIncome() {
+    public final Integer getMonthlyIncome() {
         return monthlyIncome;
     }
 
-    /**
-     * Intoarce numarul de luni din contract ale unui consumator
-     */
-    public void setMonthlyIncome(final Integer monthlyIncome) {
+    public final void setMonthlyIncome(final Integer monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 }

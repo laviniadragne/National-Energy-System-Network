@@ -33,67 +33,35 @@ public class DistributorInputData {
         this.producerStrategy = producerStrategy;
     }
 
-    /**
-     *
-     * @return Intoarce bugetul unui distribuitor
-     */
-    public Integer getInitialBudget() {
+    public final Integer getInitialBudget() {
         return initialBudget;
     }
 
-    /**
-     *
-     * Seteaza bugetul unui distribuitor
-     */
-    public void setInitialBudget(final Integer initialBudget) {
+    public final void setInitialBudget(final Integer initialBudget) {
         this.initialBudget = initialBudget;
     }
 
-    /**
-     *
-     * @return Intoarce id-ul unui distribuitor
-     */
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     *
-     * Seteaza id-ul unui distribuitor
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce lungimea contractului unui distribuitor
-     */
-    public Integer getContractLength() {
+    public final Integer getContractLength() {
         return contractLength;
     }
 
-    /**
-     *
-     * Seteaza lungimea contractului unui distribuitor
-     */
-    public void setContractLength(final Integer contractLength) {
+    public final void setContractLength(final Integer contractLength) {
         this.contractLength = contractLength;
     }
 
-    /**
-     *
-     * @return Intoarce costul infrastructurii unui distribuitor
-     */
-    public Integer getInitialInfrastructureCost() {
+    public final Integer getInitialInfrastructureCost() {
         return initialInfrastructureCost;
     }
 
-    /**
-     *
-     * Seteaza costul infrastructurii unui distribuitor
-     */
-    public void setInitialInfrastructureCost(final Integer initialInfrastructureCost) {
+    public final void setInitialInfrastructureCost(final Integer initialInfrastructureCost) {
         this.initialInfrastructureCost = initialInfrastructureCost;
     }
 

@@ -45,7 +45,7 @@ public class ProducerList {
 
     /**
      * Sterge un distribuitor primit ca si parametru
-     * din listele producatorilor si din listele de observatori
+     * de la toti producatorii si din listele lor de observatori
      * @param distributor ce trebuie sters
      */
     public void deleteDistributor(Distributor distributor) {

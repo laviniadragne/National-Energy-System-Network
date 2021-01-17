@@ -5,6 +5,12 @@ import simulation.Producer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clasa abstractă comună pentru strategiile pe care le-am
+ * implementat
+ * Ea contine si cateva metode de sortare ale producatorilor,
+ * folosite de mai multe strategii, in parte
+ */
 public abstract class Strategy {
 
     /**

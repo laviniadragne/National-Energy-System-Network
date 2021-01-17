@@ -11,43 +11,23 @@ public class ConsumerOutputData {
     private final boolean isBankrupt;
     private Integer budget;
 
-    /**
-     *
-     * @return Intoarce id-ul unui consumator
-     */
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     *
-     * Seteaza id-ul unui consumator
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce starea unui consumator
-     */
-    public boolean isBankrupt() {
+    public final boolean isBankrupt() {
         return isBankrupt;
     }
 
-    /**
-     *
-     * @return Intoarce bugetul unui consumator
-     */
-    public Integer getBudget() {
+    public final Integer getBudget() {
         return budget;
     }
 
-    /**
-     *
-     * Seteaza bugetul unui consumator
-     */
-    public void setBudget(final Integer budget) {
+    public final void setBudget(final Integer budget) {
         this.budget = budget;
     }
 

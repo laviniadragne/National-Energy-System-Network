@@ -14,120 +14,62 @@ public class Consumer implements Entity {
     private Integer idOverdue;
     private Integer priceOverdue;
 
-    /**
-     *
-     * @return Intoarce id-ul consumatorului
-     */
     @Override
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     *
-     * @return Intoarce id-ul consumatorului
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce bugetul consumatorului
-     */
     @Override
-    public Integer getInitialBudget() {
+    public final Integer getInitialBudget() {
         return initialBudget;
     }
 
-    /**
-     *
-     * Seteaza bugetul consumatorului
-     */
-    public void setInitialBudget(final Integer initialBudget) {
+    public final void setInitialBudget(final Integer initialBudget) {
         this.initialBudget = initialBudget;
     }
 
-    /**
-     *
-     * @return Intoarce numarul de luni ramase in contract
-     */
-    public Integer getMonthlyIncome() {
+    public final Integer getMonthlyIncome() {
         return monthlyIncome;
     }
 
-    /**
-     *
-     * Seteaza numarul de luni ramase in contract
-     */
-    public void setMonthlyIncome(final Integer monthlyIncome) {
+    public final void setMonthlyIncome(final Integer monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 
-    /**
-     *
-     * @return Intoarce contractul actual
-     */
-    public Contract getContract() {
+    public final Contract getContract() {
         return contract;
     }
 
-    /**
-     * Seteaza contractul actual
-     */
-    public void setContract(final Contract contract) {
+    public final void setContract(final Contract contract) {
         this.contract = contract;
     }
 
-    /**
-     *
-     * @return Intoarce daca e falimentar sau nu
-     */
     @Override
-    public boolean isBankrupt() {
+    public final boolean isBankrupt() {
         return isBankrupt;
     }
 
-    /**
-     *
-     * Se seteaza daca e falimentar sau nu
-     */
-    public void setBankrupt(final boolean bankrupt) {
+    public final void setBankrupt(final boolean bankrupt) {
         isBankrupt = bankrupt;
     }
 
-    /**
-     *
-     * @return Intoarce id-ul distribuitorului catre care
-     * trebuie sa plateasca rata restanta
-     */
-    public Integer getIdOverdue() {
+    public final Integer getIdOverdue() {
         return idOverdue;
     }
 
-    /**
-     *
-     * Seteaza id-ul distribuitorului catre care
-     * trebuie sa plateasca rata restanta
-     */
-    public void setIdOverdue(final Integer idOverdue) {
+    public final void setIdOverdue(final Integer idOverdue) {
         this.idOverdue = idOverdue;
     }
 
-    /**
-     *
-     * @return Intoarce pretul ratei restante
-     * pe care trebuie sa o plateasca
-     */
-    public Integer getPriceOverdue() {
+    public final Integer getPriceOverdue() {
         return priceOverdue;
     }
 
-    /**
-     * Seteaza pretul ratei restante
-     * pe care trebuie sa o plateasca
-     */
-    public void setPriceOverdue(final Integer priceOverdue) {
+    public final void setPriceOverdue(final Integer priceOverdue) {
         this.priceOverdue = priceOverdue;
     }
 

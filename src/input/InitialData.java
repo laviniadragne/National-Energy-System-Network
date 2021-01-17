@@ -13,35 +13,19 @@ public class InitialData {
     private List<DistributorInputData> distributors;
     private List<ProducerInputData> producers;
 
-    /**
-     *
-     * @return Intoarce o lista de consumatori
-     */
-    public List<ConsumerInputData> getConsumers() {
+    public final List<ConsumerInputData> getConsumers() {
         return consumers;
     }
 
-    /**
-     *
-     * Seteaza o lista de consumatori
-     */
-    public void setConsumers(final List<ConsumerInputData> consumers) {
+    public final void setConsumers(final List<ConsumerInputData> consumers) {
         this.consumers = consumers;
     }
 
-    /**
-     *
-     * @return Intoarce o lista de distribuitori
-     */
-    public List<DistributorInputData> getDistributors() {
+    public final List<DistributorInputData> getDistributors() {
         return distributors;
     }
 
-    /**
-     *
-     * Seteaza o lista de consumatori
-     */
-    public void setDistributors(final List<DistributorInputData> distributors) {
+    public final void setDistributors(final List<DistributorInputData> distributors) {
         this.distributors = distributors;
     }
 

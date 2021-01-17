@@ -18,59 +18,31 @@ public class DistributorOutputData {
     private final boolean isBankrupt;
     private List<ContractOutputData> contracts;
 
-    /**
-     *
-     * @return Intoarce id-ul unui distribuitor
-     */
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    /**
-     *
-     * @return Seteaza id-ul unui distribuitor
-     */
-    public void setId(final Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return Intoarce bugetul unui distribuitor
-     */
-    public Integer getBudget() {
+    public final Integer getBudget() {
         return budget;
     }
 
-    /**
-     *
-     * Seteaza bugetul unui distribuitor
-     */
-    public void setBudget(final Integer budget) {
+    public final void setBudget(final Integer budget) {
         this.budget = budget;
     }
 
-    /**
-     *
-     * @return Intoarce starea unui distribuitor
-     */
-    public boolean isBankrupt() {
+    public final boolean isBankrupt() {
         return isBankrupt;
     }
 
-    /**
-     *
-     * @return Intoarce lista de contracte ale unui distribuitor
-     */
-    public List<ContractOutputData> getContracts() {
+    public final List<ContractOutputData> getContracts() {
         return contracts;
     }
 
-    /**
-     *
-     * Seteaza lista de contracte ale unui distribuitor
-     */
-    public void setContracts(final List<ContractOutputData> contracts) {
+    public final void setContracts(final List<ContractOutputData> contracts) {
         this.contracts = contracts;
     }
 

@@ -10,19 +10,11 @@ public class ConsumerList {
 
     private List<Consumer> consumers;
 
-    /**
-     *
-     * @return Intoarce lista de consumatori
-     */
-    public List<Consumer> getConsumers() {
+    public final List<Consumer> getConsumers() {
         return consumers;
     }
 
-    /**
-     *
-     * Seteaza lista de consumatori
-     */
-    public void setConsumers(final List<Consumer> consumers) {
+    public final void setConsumers(final List<Consumer> consumers) {
         this.consumers = consumers;
     }
 
